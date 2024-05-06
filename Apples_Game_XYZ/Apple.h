@@ -9,7 +9,7 @@ namespace Apples_Game
         SPosition_2D position;
         sf::Sprite sprite;
 
-        //struct SApples_Grid_Cell *grid_cells[GRID_SIZE] = {nullptr};
+        //struct SApples_Grid_Cell *grid_cells[GRID_SIZE] = {nullptr};git 
         //int num_grid_cells = 0;
     };
 
