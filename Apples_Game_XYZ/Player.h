@@ -22,7 +22,6 @@ namespace Apples_Game
     {
         // Init state player
         float speed = INITIAL_SPEED;
-        float prev_speed = 0.f;
         SPosition_2D position;
         EPlayer_Direction direction = EPlayer_Direction::EPD_Start_Position;
 

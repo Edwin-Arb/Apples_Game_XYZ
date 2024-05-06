@@ -7,13 +7,6 @@ namespace Apples_Game
     //------------------------------------------------------------------------------------------------------------
     void Start_Playing_State(SGame& game)
     {
-        // if (game.init_apples != nullptr)
-        // {
-        //     delete [] game.init_apples;
-        //     game.init_apples = nullptr;
-        //     game.number_Apples = 0;
-        // }
-
         // Init player state
         Set_Player_Position(game.player, {SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f});
         Set_Player_Direction(game.player, EPlayer_Direction::EPD_Start_Position);
@@ -30,8 +23,6 @@ namespace Apples_Game
         }
 
         // Init apples state
-        //game.init_apples = new SApple[game.number_Apples];
-
         game.apples_array.resize(NUM_APPLES_MAX);
         for (int i = 0; i < game.number_Apples; ++i)
         {
@@ -41,14 +32,7 @@ namespace Apples_Game
             Reset_Apple_State(apple, game);
             game.apples_array.push_back(apple);
         }
-        // Clear_Apples_Grid(game.apples_grid);
-        // for (int i = 0; i < game.number_Apples; ++i)
-        // {
-        //     Init_Apple(game.init_apples[i], game);
-        //     Reset_Apple_State(game.init_apples[i], game);
-        //     Add_Apple_To_Grid(game.apples_grid, game.init_apples[i]);
-        // }
-
+        
         // Init position a tree
         for (auto& tree_count : game.trees_array)
         {
@@ -86,7 +70,10 @@ namespace Apples_Game
         }
 
         // Update player direction and sprite
-        Update_Player(game.player, delta_time);
+        if (game.is_Screen_Pause == false)
+        {
+            Update_Player(game.player, delta_time);
+        }
 
         // Check screen borders collision
         if (Do_Shapes_Collide(Get_Player_Collider(game.player), game.screen_Rect) == false)
@@ -96,41 +83,6 @@ namespace Apples_Game
 
         // Check collision with an apple
         Check_Collision_With_Apples(game);
-
-        // SApple* colliding_apples[MAX_APPLES_IN_CELL] = {nullptr};
-        // int num_colliding_apples = 0;
-        //
-        // if (FindPlayerCollisionWithApples(game.player.position, game.apples_grid, colliding_apples,
-        //                                   num_colliding_apples))
-        // {
-        //     // Get player collider
-        //     for (int i = 0; i < num_colliding_apples; ++i)
-        //     {
-        //         if (Do_Shapes_Collide(Get_Player_Collider(game.player), Get_Apple_Collider(*colliding_apples[i])))
-        //         {
-        //             if (game.game_Mode & BIT_ENDLESS_APPLES_MODE)
-        //             {
-        //                 // Set a new position for the apple
-        //                 Reset_Apple_State(*colliding_apples[i], game);
-        //                 Add_Apple_To_Grid(game.apples_grid, *colliding_apples[i]);
-        //             }
-        //             else
-        //             {
-        //                 // Marking an apple for removal
-        //                 Mark_Apple_As_Eaten(*colliding_apples[i]);
-        //                 Remove_Apple_From_Grid(game.apples_grid, *colliding_apples[i]);
-        //             }
-        //
-        //             if (game.game_Mode & BIT_ACCELERATION_MODE)
-        //             {
-        //                 game.player.speed += ACCELERATION;
-        //             }
-        //
-        //             ++game.count_Eaten_Apples;
-        //             game.player.eat_Sound.play();
-        //         }
-        //     }
-        // }
 
         // Check collision with a tree
         for (auto& tree_count : game.trees_array)
@@ -281,12 +233,7 @@ namespace Apples_Game
             // Check pressed ESC button
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
             {
-                if(game.is_Screen_Pause == false)
-                {
-                    game.player.prev_speed = game.player.speed;
-                }
                 game.is_Screen_Pause = !game.is_Screen_Pause;
-                game.player.speed = (game.player.speed == 0.f) ? game.player.prev_speed : 0.f;
             }
 
             // Check mouse position and click on a button
@@ -301,7 +248,6 @@ namespace Apples_Game
                 if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
                 {
                     game.is_Screen_Pause = false;
-                    game.player.speed = (game.player.speed == 0.f) ? game.player.prev_speed : 0.f;
                 }
             }
             else
@@ -381,23 +327,12 @@ namespace Apples_Game
                 Draw_Apple(apple, window);
             }
         }
-
-        // for (int i = 0; i < game.number_Apples; ++i)
-        // {
-        //     if (game.init_apples[i].is_Eaten_Apple == false)
-        //     {
-        //         Draw_Apple(game.init_apples[i], window);
-        //     }
-        // }
-
+        
         // Draw rocks
         for (auto& tree_count : game.trees_array)
         {
             Draw_Tree(tree_count, window);
         }
-
-        // Draw apple grid
-        //Draw_Apple_Grid(game.ui_state, GRID_SIZE, window);
 
         // Draw GameOver
         if (game.background.getFillColor() == sf::Color::Red ||
@@ -413,6 +348,5 @@ namespace Apples_Game
     void Deinitialize_Game(SGame& game)
     {
     }
-
     //------------------------------------------------------------------------------------------------------------
 }

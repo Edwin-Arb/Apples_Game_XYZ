@@ -9,15 +9,10 @@ using namespace std;
 
 namespace Apples_Game
 {	
-	constexpr const int BIT_RANDOM_APPLES_MODE = 0x01;
-	//const int BIT_NO_RANDOM_APPLES_MODE = 0b00000000;
-	
-	constexpr const int BIT_ACCELERATION_MODE = 0x20;
-	//const int BIT_NO_ACCELERATION_MODE = 0b00000000;
-		
+	constexpr const int BIT_RANDOM_APPLES_MODE = 0x01;	
+	constexpr const int BIT_ACCELERATION_MODE = 0x20;		
 	constexpr const int BIT_ENDLESS_APPLES_MODE = 0x300;
-	//const int BIT_NO_ENDLESS_APPLES_MODE = 0b00000000;
-
+	
 	constexpr const int SIZE_LEADERBOARD = 10;
 	
 	constexpr const int SCREEN_WIDTH = 800;
@@ -36,9 +31,4 @@ namespace Apples_Game
 	constexpr const float PAUSE_LENGTH = 0.f;
 
 	const string RESOURCES_PATH = "Resources/";
-
-	//constexpr int GRID_SIZE = 4;
-	// constexpr unsigned APPLES_GRID_CELLS_HORIZONTAL = GRID_SIZE;    //static_cast<unsigned>(SCREEN_WIDTH / (APPLE_SIZE * GRID_SIZE));
-	// constexpr unsigned APPLES_GRID_CELLS_VERTICAL = GRID_SIZE;      //static_cast<unsigned>(SCREEN_HEIGHT / (APPLE_SIZE * GRID_SIZE));
-	// constexpr unsigned MAX_APPLES_IN_CELL = NUM_APPLES_MAX / GRID_SIZE;
 }

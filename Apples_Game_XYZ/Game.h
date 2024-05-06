@@ -52,7 +52,6 @@ namespace Apples_Game
 
         // Mouse
         sf::Vector2i mouse_Position;
-        //SApple *init_apples = nullptr;
     };
     
     void Init_Game(SGame& game);
