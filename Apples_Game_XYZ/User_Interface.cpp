@@ -5,15 +5,11 @@
 
 namespace Apples_Game
 {
-    // Init the random number generator
-    std::random_device rd;
-    std::mt19937 g(rd());
-
     //--------------------------------------------------------------------------------------------------------
     void Init_User_Interface(SUser_Interface& ui_state, SGame& game)
     {
         // Init Font
-        ui_state.font.loadFromFile(RESOURCES_PATH + "Fonts/Roboto-Regular.ttf");
+        ui_state.font.loadFromFile(RESOURCES_PATH + "Fonts/Pirate.ttf");
 
         // Score
         Init_Text(ui_state.text_Score, ui_state.font, sf::Color::Blue,
@@ -41,28 +37,28 @@ namespace Apples_Game
 
         // Menu
         Init_Text(ui_state.text_Menu, ui_state.font, sf::Color::Yellow,
-                  180, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
-                  270.f, 330.f, "Apples");
+                  160, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
+                  235.f, 330.f, "Apples");
 
         // Pause
         Init_Text(ui_state.text_Pause, ui_state.font, sf::Color::Yellow,
-                  150, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
-                  200.f, 300.f,"Pause");
+                  160, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
+                  200.f, 300.f, "Pause");
 
         // Pause "Continue button" 
         Init_Text(ui_state.text_Continue, ui_state.font, sf::Color::White,
-                 70, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
-                 130.f, 50.f, "Continue");
+                  70, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
+                  130.f, 50.f, "Continue");
 
         // Pause "Exit button" 
         Init_Text(ui_state.text_Exit, ui_state.font, sf::Color::White,
-                 70, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
-                 55.f, -85.f,"Exit");
+                  70, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
+                  55.f, -85.f, "Exit");
 
         // User information
         Init_Text(ui_state.text_Information, ui_state.font, sf::Color::White,
-                 30, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
-                 150.f, 110.f, "press Space to continue");
+                  30, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
+                  150.f, 110.f, "press Space to continue");
 
         // Leaderboard
         for (SLeaderboard& item : ui_state.vector_Score_Table)
@@ -78,6 +74,18 @@ namespace Apples_Game
         }
     }
     //--------------------------------------------------------------------------------------------------------
+    void Init_Text(sf::Text& text, const sf::Font& font, sf::Color color,
+                  int size, float position_x, float position_y,
+                  float offset_x, float offset_y, const string& name)
+    {
+        text.setFont(font);
+        text.setCharacterSize(size);
+        text.setFillColor(sf::Color(color));
+        text.setPosition(position_x, position_y);
+        text.setOrigin(offset_x, offset_y);
+        text.setString(name);
+    }
+    //--------------------------------------------------------------------------------------------------------
     void Init_Text_Leaderboard(SGame& game, vector<SLeaderboard>& score_table, float row_height, float vertical_spacing,
                                float origin_x, float origin_y)
     {
@@ -87,9 +95,9 @@ namespace Apples_Game
         // Sort vector Score Table
         stable_sort(game.ui_state.vector_Score_Table.begin(), game.ui_state.vector_Score_Table.end(),
                     [](const SLeaderboard& a, const SLeaderboard& b)
-        {
-            return a.score > b.score;
-        });
+                    {
+                        return a.score > b.score;
+                    });
 
         // Init text
         for (SLeaderboard& item : score_table)
@@ -115,18 +123,6 @@ namespace Apples_Game
             vertical_position += row_height + vertical_spacing;
             ++i;
         }
-    }
-    //--------------------------------------------------------------------------------------------------------
-    void Init_Text(sf::Text& text, const sf::Font& font, sf::Color color,
-                   int size, float position_x, float position_y,
-                   float offset_x, float offset_y, const string& name)
-    {
-        text.setFont(font);
-        text.setCharacterSize(size);
-        text.setFillColor(sf::Color(color));
-        text.setPosition(position_x, position_y);
-        text.setOrigin(offset_x, offset_y);
-        text.setString(name);
     }
     //--------------------------------------------------------------------------------------------------------
     void Draw_User_Interface(SUser_Interface& ui_state, struct SGame& game, sf::RenderWindow& window)
