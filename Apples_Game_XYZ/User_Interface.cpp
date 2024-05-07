@@ -118,7 +118,7 @@ namespace Apples_Game
         text.setString(name);
     }
     //--------------------------------------------------------------------------------------------------------
-    void Draw_User_Interface(SUser_Interface& ui_state, struct SGame& game, sf::RenderWindow& window, const sf::Event &event)
+    void Draw_User_Interface(SUser_Interface& ui_state, struct SGame& game, sf::RenderWindow& window)
     {
         // Init pause texture
         game.pause_blur_Texture.create(window.getSize().x, window.getSize().y);

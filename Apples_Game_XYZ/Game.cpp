@@ -342,7 +342,7 @@ namespace Apples_Game
         }
 
         // Draw start setting
-        Draw_User_Interface(game.ui_state, game, window, event);
+        Draw_User_Interface(game.ui_state, game, window);
     }
     //------------------------------------------------------------------------------------------------------------
     void Deinitialize_Game(SGame& game)

@@ -5,7 +5,6 @@
 #include "Tree.h"
 #include "User_Interface.h"
 
-
 namespace Apples_Game
 {
     // Create game objects
@@ -17,6 +16,7 @@ namespace Apples_Game
         bool is_Screen_Game_Over = false;
         bool is_Leaderboard = false;
 
+        // User for Bit Mask
         int game_Mode = 0;
         
         int number_Apples = 0;
@@ -28,7 +28,6 @@ namespace Apples_Game
         // Init Objects state
         SPlayer player;
         vector<SApple> apples_array;
-        //SApples_Grid apples_grid;
         STree trees_array[NUM_TREE];
         SUser_Interface ui_state;
         sf::RectangleShape background;
@@ -70,5 +69,4 @@ namespace Apples_Game
     string Get_Button_Text(const SGame &game, const int mode_selection);
     void Draw_Game(SGame& game, sf::RenderWindow& window, const sf::Event &event);
     void Deinitialize_Game(SGame& game);
-    
 }
