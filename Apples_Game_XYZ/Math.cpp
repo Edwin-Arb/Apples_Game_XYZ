@@ -91,14 +91,14 @@ namespace Apples_Game
         return {result_X(gen), result_Y(gen)};
     }
     //------------------------------------------------------------------------------------------------------------
-    void Set_Sprite_Size(sf::Sprite& sprite, float desired_Width, float desired_Height)
+    void Set_Sprite_Size(sf::Sprite& sprite, const float desired_Width, const float desired_Height)
     {
         const sf::FloatRect sprite_Rect = sprite.getLocalBounds();
         const sf::Vector2f scale = { desired_Width / sprite_Rect.width, desired_Height / sprite_Rect.height };
         sprite.setScale(scale);
     }
     //------------------------------------------------------------------------------------------------------------
-    void Set_Sprite_Relative_Origin(sf::Sprite& sprite, float origin_X, float origin_Y)
+    void Set_Sprite_Relative_Origin(sf::Sprite& sprite, const float origin_X, const float origin_Y)
     {
         const sf::FloatRect sprite_Rect = sprite.getLocalBounds();
         sprite.setOrigin(origin_X * sprite_Rect.width, origin_Y * sprite_Rect.height);

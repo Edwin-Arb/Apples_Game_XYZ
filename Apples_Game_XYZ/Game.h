@@ -54,19 +54,19 @@ namespace Apples_Game
     };
     
     void Init_Game(SGame& game);
-    void Update_Game(SGame& game, float delta_time);
+    void Update_Game(SGame& game, const float delta_time);
 
     void Start_Playing_State(SGame &game);
-    void Update_Playing_State(SGame &game, float delta_time);
+    void Update_Playing_State(SGame &game, const float delta_time);
     
     void Start_GameOver_State(SGame& game);
-    void Update_GameOver_State(SGame& game, float delta_time);
+    void Update_GameOver_State(SGame& game, const float delta_time);
     
     void Update_Menu(SGame &game, const float delta_time);
     
     void Handle_Keys_Main_Menu(const sf::Event& event, sf::RenderWindow &window, SGame& game);
     void Toggle_Game_Mode(SGame &game, const int mode_selection);
     string Get_Button_Text(const SGame &game, const int mode_selection);
-    void Draw_Game(SGame& game, sf::RenderWindow& window, const sf::Event &event);
+    void Draw_Game(SGame& game, sf::RenderWindow& window);
     void Deinitialize_Game(SGame& game);
 }

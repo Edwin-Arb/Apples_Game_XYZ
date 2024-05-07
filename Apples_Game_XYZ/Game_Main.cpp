@@ -43,7 +43,7 @@ int main()
         // Draw everything
         window.clear();
 
-        Draw_Game(game, window, event);
+        Draw_Game(game, window);
 
         window.display();
     }

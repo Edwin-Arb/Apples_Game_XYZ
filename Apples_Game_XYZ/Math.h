@@ -36,7 +36,7 @@ namespace Apples_Game
     
     SPosition_2D Get_Random_Position_In_Screen(const SRectangle &rect);
     
-    void Set_Sprite_Size(sf::Sprite& sprite, float desired_Width, float desired_Height);
-    void Set_Sprite_Relative_Origin(sf::Sprite& sprite, float origin_X, float origin_Y);
+    void Set_Sprite_Size(sf::Sprite& sprite, const float desired_Width, const float desired_Height);
+    void Set_Sprite_Relative_Origin(sf::Sprite& sprite, const float origin_X, const float origin_Y);
     int Get_Random_Int(const int &min, const int &max);
 }

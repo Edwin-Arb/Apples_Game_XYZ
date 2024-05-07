@@ -4,9 +4,6 @@
 // Table row height
 constexpr float ROW_HEIGHT = 30.f;
 
-// Vertical offset between table rows
-constexpr float VERTICAL_SPACING = 5.f;
-
 // Show only the first seven players
 constexpr int MAX_PLAYERS_TO_DISPLAY = 7;
 
@@ -45,7 +42,7 @@ namespace Apples_Game
         sf::Text text_Leaderboard_Name[SIZE_LEADERBOARD];
     };
 
-    void Init_User_Interface(SUser_Interface& ui_state, SGame& game);
+    void Init_User_Interface(SUser_Interface& ui_state);
     void Init_Text(sf::Text& text, const sf::Font& font, sf::Color color,
                    int size, float position_x, float position_y,
                    float offset_x = 0.f, float offset_y = 0.f, const string &name = "NON");

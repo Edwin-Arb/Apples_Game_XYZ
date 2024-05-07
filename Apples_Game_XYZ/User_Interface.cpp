@@ -6,7 +6,7 @@
 namespace Apples_Game
 {
     //--------------------------------------------------------------------------------------------------------
-    void Init_User_Interface(SUser_Interface& ui_state, SGame& game)
+    void Init_User_Interface(SUser_Interface& ui_state)
     {
         // Init Font
         ui_state.font.loadFromFile(RESOURCES_PATH + "Fonts/Pirate.ttf");

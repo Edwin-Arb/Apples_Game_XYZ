@@ -46,7 +46,7 @@ namespace Apples_Game
     }
 
     //------------------------------------------------------------------------------------------------------------
-    void Update_Playing_State(SGame& game, float delta_time)
+    void Update_Playing_State(SGame& game, const float delta_time)
     {
         // Handle input
         if (game.is_Screen_Pause == false)
@@ -103,7 +103,7 @@ namespace Apples_Game
         game.player_Sound.play();
     }
     //------------------------------------------------------------------------------------------------------------
-    void Update_GameOver_State(SGame& game, float delta_time)
+    void Update_GameOver_State(SGame& game, const float delta_time)
     {
         // Check the pause length and set the Background color to Red.
         if (game.time_Since_Game_Finish <= PAUSE_LENGTH)
@@ -177,7 +177,7 @@ namespace Apples_Game
         }
 
         // Init ui_state
-        Init_User_Interface(game.ui_state, game);
+        Init_User_Interface(game.ui_state);
 
         // Init background Shape
         game.background.setFillColor(sf::Color::Red);
@@ -187,7 +187,7 @@ namespace Apples_Game
         Start_Playing_State(game);
     }
     //------------------------------------------------------------------------------------------------------------
-    void Update_Game(SGame& game, float delta_time)
+    void Update_Game(SGame& game, const float delta_time)
     {
         // Update game state
         if (game.is_Screen_Menu == true)
@@ -311,7 +311,7 @@ namespace Apples_Game
     }
     //------------------------------------------------------------------------------------------------------------
     // Draw window
-    void Draw_Game(SGame& game, sf::RenderWindow& window, const sf::Event &event)
+    void Draw_Game(SGame& game, sf::RenderWindow& window)
     {
         // Draw background
         window.draw(game.game_map_Sprite);
