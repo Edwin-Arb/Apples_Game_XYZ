@@ -1,5 +1,4 @@
 #include "Apple.h"
-#include <cassert>
 #include "Game.h"
 
 

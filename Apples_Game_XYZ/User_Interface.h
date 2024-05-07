@@ -1,5 +1,4 @@
 #pragma once
-#include <unordered_map>
 
 #include "Constants.h"
 
@@ -17,8 +16,6 @@ struct SLeaderboard
 {
     string name;
     int score;
-
-    SLeaderboard(string n, int s) : name(n), score(s) {}
 };
 
 namespace Apples_Game
