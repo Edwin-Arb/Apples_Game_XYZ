@@ -16,51 +16,51 @@ namespace Apples_Game
         ui_state.font.loadFromFile(RESOURCES_PATH + "Fonts/Roboto-Regular.ttf");
 
         // Score
-        Init_Text(ui_state.text_Score, ui_state.font, sf::Color::Blue, "",30, 10.f, 10.f);
+        Init_Text(ui_state.text_Score, ui_state.font, sf::Color::Blue, 30, 10.f, 10.f);
 
         // Start Setting
-        Init_Text(ui_state.text_Random_Number_Apples_Mode, ui_state.font, sf::Color::Magenta, "",
+        Init_Text(ui_state.text_Random_Number_Apples_Mode, ui_state.font, sf::Color::Magenta,
                   30, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT - 100.f);
         ui_state.text_Random_Number_Apples_Mode.setOrigin(160.f, 0.f);
         
         // Acceleration mode                                                           
-        Init_Text(ui_state.text_Acceleration_Mode, ui_state.font, sf::Color::Magenta, "",
+        Init_Text(ui_state.text_Acceleration_Mode, ui_state.font, sf::Color::Magenta,
                   30, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT - 100.f);
         ui_state.text_Acceleration_Mode.setOrigin(160.f, -30.f);
         
         // Endless apples mode                                                         
-        Init_Text(ui_state.text_Endless_Apples_Mode, ui_state.font, sf::Color::Magenta, "",
+        Init_Text(ui_state.text_Endless_Apples_Mode, ui_state.font, sf::Color::Magenta,
                   30, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT - 100.f);
         ui_state.text_Endless_Apples_Mode.setOrigin(160.f, -60.f);
 
         // GameOver
-        Init_Text(ui_state.text_GameOver, ui_state.font, sf::Color::Yellow, "GameOver",
-                  130, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f);
+        Init_Text(ui_state.text_GameOver, ui_state.font, sf::Color::Yellow, 130,
+            SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f, "GameOver");
         ui_state.text_GameOver.setOrigin(290.f, 250.f);
 
         // Menu
-        Init_Text(ui_state.text_Menu, ui_state.font, sf::Color::Yellow, "Apples",
-                  180, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f);
+        Init_Text(ui_state.text_Menu, ui_state.font, sf::Color::Yellow, 180,
+            SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f, "Apples");
         ui_state.text_Menu.setOrigin(270.f, 330.f);
 
         // Pause
-        Init_Text(ui_state.text_Pause, ui_state.font, sf::Color::Yellow, "Pause",
-                  150, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f);
+        Init_Text(ui_state.text_Pause, ui_state.font, sf::Color::Yellow, 150,
+            SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f, "Pause");
         ui_state.text_Pause.setOrigin(200.f, 300.f);
 
         // Pause "Continue button" 
-        Init_Text(ui_state.text_Continue, ui_state.font, sf::Color::White, "Continue",
-                 70, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f);
+        Init_Text(ui_state.text_Continue, ui_state.font, sf::Color::White, 70,
+            SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f, "Continue");
         ui_state.text_Continue.setOrigin(130.f, 50.f);
         
         // Pause "Exit button" 
-        Init_Text(ui_state.text_Exit, ui_state.font, sf::Color::White, "Exit",
-                 70, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f);
+        Init_Text(ui_state.text_Exit, ui_state.font, sf::Color::White, 70,
+            SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f, "Exit");
         ui_state.text_Exit.setOrigin(55.f, -85.f);
 
         // User information
-        Init_Text(ui_state.text_Information, ui_state.font, sf::Color::White, "press Space to continue",
-                  30, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f);
+        Init_Text(ui_state.text_Information, ui_state.font, sf::Color::White, 30,
+            SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f, "press Space to continue");
         ui_state.text_Information.setOrigin(150.f, 110.f);
 
         // Leaderboard
@@ -87,7 +87,7 @@ namespace Apples_Game
         {
             if (item.name == "YOU")
             {
-                Init_Text(game.ui_state.text_Leaderboard_Name[i], game.ui_state.font, sf::Color::White, "",
+                Init_Text(game.ui_state.text_Leaderboard_Name[i], game.ui_state.font, sf::Color::White,
                           40, SCREEN_WIDTH / 2.f, vertical_position);
                 if (item.score < game.count_Eaten_Apples)
                 {
@@ -96,7 +96,7 @@ namespace Apples_Game
             }
             else
             {
-                Init_Text(game.ui_state.text_Leaderboard_Name[i], game.ui_state.font, sf::Color::Green, "",
+                Init_Text(game.ui_state.text_Leaderboard_Name[i], game.ui_state.font, sf::Color::Green, 
                          40, SCREEN_WIDTH / 2.f, vertical_position);
             }
     
@@ -108,14 +108,14 @@ namespace Apples_Game
         }
     }
     //--------------------------------------------------------------------------------------------------------
-    void Init_Text(sf::Text& text, const sf::Font& font, sf::Color color, const string& name,
-                   int size, float position_x, float position_y)
+    void Init_Text(sf::Text& text, const sf::Font& font, sf::Color color,
+                   int size, float position_x, float position_y, const string &name)
     {
         text.setFont(font);
         text.setCharacterSize(size);
         text.setFillColor(sf::Color(color));
-        text.setString(name);
         text.setPosition(position_x, position_y);
+        text.setString(name);
     }
     //--------------------------------------------------------------------------------------------------------
     void Draw_User_Interface(SUser_Interface& ui_state, struct SGame& game, sf::RenderWindow& window, const sf::Event &event)

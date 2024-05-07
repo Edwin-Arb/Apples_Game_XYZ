@@ -50,7 +50,7 @@ namespace Apples_Game
     };
 
     void Init_User_Interface(SUser_Interface& ui_state, SGame& game);
-    void Init_Text(sf::Text& text, const sf::Font& font, sf::Color color, const string& name, int size, float position_x, float position_y);
+    void Init_Text(sf::Text& text, const sf::Font& font, sf::Color color, int size, float position_x, float position_y, const string &name = "");
     void Init_Text_Leaderboard(SGame& game, vector<SLeaderboard> &score_table, float row_height, float vertical_spacing,
                                                                                float origin_x, float origin_y);
     void Draw_User_Interface(SUser_Interface& ui_state, struct SGame& game, sf::RenderWindow& window, const sf::Event &event);
