@@ -7,6 +7,16 @@ namespace Apples_Game
     //------------------------------------------------------------------------------------------------------------
     void Start_Playing_State(SGame& game)
     {
+        if (!game.apples_array.empty())
+        {
+            game.apples_array.clear();
+        }
+
+        if (!game.trees_array.empty())
+        {
+            game.trees_array.clear();
+        }
+        
         // Init player state
         Set_Player_Position(game.player, {SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f});
         Set_Player_Direction(game.player, EPlayer_Direction::EPD_Start_Position);
@@ -23,28 +33,29 @@ namespace Apples_Game
         }
 
         // Init apples state
-        game.apples_array.resize(NUM_APPLES_MAX);
         for (int i = 0; i < game.number_Apples; ++i)
         {
             SApple apple;
-            apple.position = Get_Random_Position_In_Screen(game.screen_Rect);
             Init_Apple(apple, game);
+            apple.position = Get_Random_Position_In_Screen(game.screen_Rect);
             Reset_Apple_State(apple, game);
-            game.apples_array.push_back(apple);
-        }
-        
-        // Init position a tree
-        for (auto& tree_count : game.trees_array)
-        {
-            Set_Tree_Position(tree_count, Get_Random_Position_In_Screen(game.screen_Rect));
+            game.apples_array.emplace_back(apple);
         }
 
+        // Init position a tree
+        for (int i = 0; i < NUM_TREE; ++i)
+        {
+            STree tree;
+            Init_Tree(tree, game);
+            Set_Tree_Position(tree, Get_Random_Position_In_Screen(game.screen_Rect));
+            game.trees_array.emplace_back(tree);
+        }
+        
         // Set default parameters
         game.is_Screen_Game_Over = false;
         game.count_Eaten_Apples = 0;
         game.time_Since_Game_Finish = 0;
     }
-
     //------------------------------------------------------------------------------------------------------------
     void Update_Playing_State(SGame& game, const float delta_time)
     {
@@ -167,15 +178,13 @@ namespace Apples_Game
         // Init game objects
         game.screen_Rect = {{0.f, 0.f}, {SCREEN_WIDTH, SCREEN_HEIGHT}};
 
+        // Allocate memory for the vectors
+        game.apples_array.reserve(NUM_APPLES_MAX);
+        game.trees_array.reserve(NUM_TREE);
+        
         // Init player state
         Init_Player(game.player, game);
-
-        // Init rocks state
-        for (auto& tree_count : game.trees_array)
-        {
-            Init_Tree(tree_count, game);
-        }
-
+        
         // Init ui_state
         Init_User_Interface(game.ui_state);
 

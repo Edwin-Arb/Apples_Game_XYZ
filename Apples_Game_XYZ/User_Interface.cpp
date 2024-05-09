@@ -35,7 +35,7 @@ namespace Apples_Game
                   130, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
                   290.f, 250.f, "GameOver");
 
-        // Menu
+        // Menu "The game name"
         Init_Text(ui_state.text_Menu, ui_state.font, sf::Color::Yellow,
                   160, SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f,
                   235.f, 330.f, "Apples");

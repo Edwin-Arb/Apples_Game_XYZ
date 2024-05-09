@@ -26,7 +26,7 @@ namespace Apples_Game
     SRectangle Get_Tree_Collider(const STree& tree)
     {
         return { { tree.position.X - TREE_SIZE / 2.f, tree.position.Y - TREE_SIZE / 2.f },
-                      { TREE_SIZE, TREE_SIZE } };
+                       { TREE_SIZE, TREE_SIZE } };
     }
     //--------------------------------------------------------------------------------------------------------
 }

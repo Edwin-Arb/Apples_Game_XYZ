@@ -28,7 +28,7 @@ namespace Apples_Game
         // Init Objects state
         SPlayer player;
         vector<SApple> apples_array;
-        STree trees_array[NUM_TREE];
+        vector<STree> trees_array;
         SUser_Interface ui_state;
         sf::RectangleShape background;
 

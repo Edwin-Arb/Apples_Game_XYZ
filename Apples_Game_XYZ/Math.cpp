@@ -59,7 +59,7 @@ namespace Apples_Game
                 else
                 {
                     // Marking an apple for removal
-                    apples_to_delete.push_back(i);
+                    apples_to_delete.emplace_back(i);
                 }
 
                 // Acceleration Mode
