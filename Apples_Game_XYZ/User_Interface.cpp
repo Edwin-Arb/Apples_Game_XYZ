@@ -91,7 +91,7 @@ namespace Apples_Game
     {
         int i = 0;
         float vertical_position = 0.f;
-
+        
         // Sort vector Score Table
         stable_sort(game.ui_state.vector_Score_Table.begin(), game.ui_state.vector_Score_Table.end(),
                     [](const SLeaderboard& a, const SLeaderboard& b)
@@ -129,7 +129,7 @@ namespace Apples_Game
     {
         // Init pause texture
         game.pause_blur_Texture.create(window.getSize().x, window.getSize().y);
-        game.pause_blur_Texture.clear(sf::Color(0, 0, 0, 180));
+        game.pause_blur_Texture.clear(sf::Color(0, 0, 0, 200));
         game.pause_blur_Sprite.setTexture(game.pause_blur_Texture.getTexture());
 
         // Draw Start setting
@@ -181,7 +181,7 @@ namespace Apples_Game
             // Score table
             Init_Text_Leaderboard(game, ui_state.vector_Score_Table, ROW_HEIGHT, 10, 100, -220);
 
-            // Draw
+            // Draw 
             for (int i = 0; i < MAX_PLAYERS_TO_DISPLAY; ++i)
             {
                 window.draw(ui_state.text_Leaderboard_Name[i]);

@@ -7,6 +7,7 @@ namespace Apples_Game
     //------------------------------------------------------------------------------------------------------------
     void Start_Playing_State(SGame& game)
     {
+        // Check if the vector is empty
         if (!game.apples_array.empty())
         {
             game.apples_array.clear();
