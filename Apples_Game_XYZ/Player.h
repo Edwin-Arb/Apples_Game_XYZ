@@ -40,7 +40,7 @@ namespace Apples_Game
     void Set_Player_Position(SPlayer& player, const SPosition_2D& new_position);
     void Set_Player_Speed(SPlayer& player, float new_speed);
     void Update_Player(SPlayer& player, float delta_time);
-    float Get_Player_Speed(const SPlayer& player);
+    //float Get_Player_Speed(const SPlayer& player);
     
     SRectangle Get_Player_Collider(const SPlayer &player);
     void Draw_Player(SPlayer& player, sf::RenderWindow& window);

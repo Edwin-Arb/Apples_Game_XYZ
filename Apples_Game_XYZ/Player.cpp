@@ -74,10 +74,10 @@ namespace Apples_Game
         player.speed = new_speed;
     }
     //------------------------------------------------------------------------------------------------------------
-    float Get_Player_Speed(const SPlayer& player)
-    {
-        return player.speed;
-    }
+    // float Get_Player_Speed(const SPlayer& player)
+    // {
+    //     return player.speed;
+    // }
     //------------------------------------------------------------------------------------------------------------
     SRectangle Get_Player_Collider(const SPlayer& player)
     {

@@ -54,9 +54,9 @@ namespace Apples_Game
     };
     
     void Init_Game(SGame& game);
-    void Update_Game(SGame& game, const float delta_time);
-
     void Start_Playing_State(SGame &game);
+
+    void Update_Game(SGame& game, const float delta_time);
     void Update_Playing_State(SGame &game, const float delta_time);
     
     void Start_GameOver_State(SGame& game);

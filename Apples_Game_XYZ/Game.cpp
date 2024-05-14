@@ -5,6 +5,47 @@
 namespace Apples_Game
 {
     //------------------------------------------------------------------------------------------------------------
+    void Init_Game(SGame& game)
+    {
+        // Init Texture objects
+        assert(game.player_Texture.loadFromFile(RESOURCES_PATH + "Boar_XYZ.png"));
+        assert(game.apple_Texture.loadFromFile(RESOURCES_PATH + "Apple_XYZ.png"));
+        assert(game.tree_Texture.loadFromFile(RESOURCES_PATH + "Tree_XYZ.png"));
+
+        // Init Audio
+        assert(game.player_eat_Buffer.loadFromFile(RESOURCES_PATH + "Boar_Eat_Sound.wav"));
+        assert(game.player_hit_Buffer.loadFromFile(RESOURCES_PATH + "Boar_Hit_Sound.wav"));
+        assert(game.player_is_died_Buffer.loadFromFile(RESOURCES_PATH + "Boar_Die_Sound.wav"));
+        game.player.hit_Sound.setVolume(20.f);
+        game.player_Sound.setBuffer(game.player_is_died_Buffer);
+        game.player_Sound.setVolume(5.f);
+
+        // Init game map
+        assert(game.game_map_Image.loadFromFile(RESOURCES_PATH + "Background_Grass_XYZ.jpg"));
+        game.game_map_Sprite.setTexture(game.game_map_Image);
+        game.game_map_Sprite.setPosition(0.f, 0.f);
+
+        // Init game objects
+        game.screen_Rect = {{0.f, 0.f}, {SCREEN_WIDTH, SCREEN_HEIGHT}};
+
+        // Allocate memory for the vectors
+        game.apples_array.reserve(NUM_APPLES_MAX);
+        game.trees_array.reserve(NUM_TREE);
+        
+        // Init player state
+        Init_Player(game.player, game);
+        
+        // Init ui_state
+        Init_User_Interface(game.ui_state);
+
+        // Init background Shape
+        game.background.setFillColor(sf::Color::Red);
+        game.background.setSize(sf::Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
+        game.background.setPosition(0.f, 0.f);
+
+        Start_Playing_State(game);
+    }
+    //------------------------------------------------------------------------------------------------------------
     void Start_Playing_State(SGame& game)
     {
         // Check if the vector is empty
@@ -56,6 +97,23 @@ namespace Apples_Game
         game.is_Screen_Game_Over = false;
         game.count_Eaten_Apples = 0;
         game.time_Since_Game_Finish = 0;
+    }
+    //------------------------------------------------------------------------------------------------------------
+    void Update_Game(SGame& game, const float delta_time)
+    {
+        // Update game state
+        if (game.is_Screen_Menu == true)
+        {
+            Update_Menu(game, delta_time);
+        }
+        else if (game.is_Screen_Game_Over == false)
+        {
+            Update_Playing_State(game, delta_time);
+        }
+        else if (game.is_Screen_Game_Over == true)
+        {
+            Update_GameOver_State(game, delta_time);
+        }
     }
     //------------------------------------------------------------------------------------------------------------
     void Update_Playing_State(SGame& game, const float delta_time)
@@ -153,64 +211,6 @@ namespace Apples_Game
                 Start_Playing_State(game);
                 game.is_Screen_Menu = false;
             }
-        }
-    }
-    //------------------------------------------------------------------------------------------------------------
-    void Init_Game(SGame& game)
-    {
-        // Init Texture objects
-        assert(game.player_Texture.loadFromFile(RESOURCES_PATH + "Boar_XYZ.png"));
-        assert(game.apple_Texture.loadFromFile(RESOURCES_PATH + "Apple_XYZ.png"));
-        assert(game.tree_Texture.loadFromFile(RESOURCES_PATH + "Tree_XYZ.png"));
-
-        // Init Audio
-        assert(game.player_eat_Buffer.loadFromFile(RESOURCES_PATH + "Boar_Eat_Sound.wav"));
-        assert(game.player_hit_Buffer.loadFromFile(RESOURCES_PATH + "Boar_Hit_Sound.wav"));
-        assert(game.player_is_died_Buffer.loadFromFile(RESOURCES_PATH + "Boar_Die_Sound.wav"));
-        game.player.hit_Sound.setVolume(20.f);
-        game.player_Sound.setBuffer(game.player_is_died_Buffer);
-        game.player_Sound.setVolume(5.f);
-
-        // Init game map
-        assert(game.game_map_Image.loadFromFile(RESOURCES_PATH + "Background_Grass_XYZ.jpg"));
-        game.game_map_Sprite.setTexture(game.game_map_Image);
-        game.game_map_Sprite.setPosition(0.f, 0.f);
-
-        // Init game objects
-        game.screen_Rect = {{0.f, 0.f}, {SCREEN_WIDTH, SCREEN_HEIGHT}};
-
-        // Allocate memory for the vectors
-        game.apples_array.reserve(NUM_APPLES_MAX);
-        game.trees_array.reserve(NUM_TREE);
-        
-        // Init player state
-        Init_Player(game.player, game);
-        
-        // Init ui_state
-        Init_User_Interface(game.ui_state);
-
-        // Init background Shape
-        game.background.setFillColor(sf::Color::Red);
-        game.background.setSize(sf::Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
-        game.background.setPosition(0.f, 0.f);
-
-        Start_Playing_State(game);
-    }
-    //------------------------------------------------------------------------------------------------------------
-    void Update_Game(SGame& game, const float delta_time)
-    {
-        // Update game state
-        if (game.is_Screen_Menu == true)
-        {
-            Update_Menu(game, delta_time);
-        }
-        else if (game.is_Screen_Game_Over == false)
-        {
-            Update_Playing_State(game, delta_time);
-        }
-        else if (game.is_Screen_Game_Over == true)
-        {
-            Update_GameOver_State(game, delta_time);
         }
     }
     //------------------------------------------------------------------------------------------------------------
