@@ -38,7 +38,7 @@ int main()
             Handle_Keys_Main_Menu(event, window, game);
         }
 
-        Update_Game(game, delta_Time);
+        Update_Game_State(game, delta_Time);
 
         // Draw everything
         window.clear();

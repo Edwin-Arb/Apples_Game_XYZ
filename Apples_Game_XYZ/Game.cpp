@@ -31,10 +31,10 @@ namespace Apples_Game
         // Allocate memory for the vectors
         game.apples_array.reserve(NUM_APPLES_MAX);
         game.trees_array.reserve(NUM_TREE);
-        
+
         // Init player state
         Init_Player(game.player, game);
-        
+
         // Init ui_state
         Init_User_Interface(game.ui_state);
 
@@ -58,7 +58,7 @@ namespace Apples_Game
         {
             game.trees_array.clear();
         }
-        
+
         // Init player state
         Set_Player_Position(game.player, {SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 2.f});
         Set_Player_Direction(game.player, EPlayer_Direction::EPD_Start_Position);
@@ -92,14 +92,14 @@ namespace Apples_Game
             Set_Tree_Position(tree, Get_Random_Position_In_Screen(game.screen_Rect));
             game.trees_array.emplace_back(tree);
         }
-        
+
         // Set default parameters
         game.is_Screen_Game_Over = false;
         game.count_Eaten_Apples = 0;
         game.time_Since_Game_Finish = 0;
     }
     //------------------------------------------------------------------------------------------------------------
-    void Update_Game(SGame& game, const float delta_time)
+    void Update_Game_State(SGame& game, const float delta_time)
     {
         // Update game state
         if (game.is_Screen_Menu == true)
@@ -213,6 +213,7 @@ namespace Apples_Game
             }
         }
     }
+
     //------------------------------------------------------------------------------------------------------------
     void Handle_Keys_Main_Menu(const sf::Event& event, sf::RenderWindow& window, SGame& game)
     {
@@ -283,7 +284,7 @@ namespace Apples_Game
                 game.ui_state.text_Exit.setFillColor(sf::Color::White);
             }
         }
-        
+
         // Leaderboard
         if (event.type == sf::Event::KeyPressed)
         {
@@ -304,11 +305,13 @@ namespace Apples_Game
             }
         }
     }
+
     //------------------------------------------------------------------------------------------------------------
     void Toggle_Game_Mode(SGame& game, const int mode_selection)
     {
         game.game_Mode ^= mode_selection;
     }
+
     //------------------------------------------------------------------------------------------------------------
     string Get_Button_Text(const SGame& game, const int mode_selection)
     {
@@ -319,6 +322,7 @@ namespace Apples_Game
 
         return "Off";
     }
+
     //------------------------------------------------------------------------------------------------------------
     // Draw window
     void Draw_Game(SGame& game, sf::RenderWindow& window)
@@ -337,7 +341,7 @@ namespace Apples_Game
                 Draw_Apple(apple, window);
             }
         }
-        
+
         // Draw rocks
         for (auto& tree_count : game.trees_array)
         {
@@ -354,9 +358,11 @@ namespace Apples_Game
         // Draw start setting
         Draw_User_Interface(game.ui_state, game, window);
     }
+
     //------------------------------------------------------------------------------------------------------------
     void Deinitialize_Game(SGame& game)
     {
     }
+
     //------------------------------------------------------------------------------------------------------------
 }

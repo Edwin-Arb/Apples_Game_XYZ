@@ -1,11 +1,6 @@
 #pragma once
 #include "Constants.h"
 
-namespace sf
-{
-    class Sprite;
-}
-
 namespace Apples_Game
 {
     enum class EPlayer_Direction : int
